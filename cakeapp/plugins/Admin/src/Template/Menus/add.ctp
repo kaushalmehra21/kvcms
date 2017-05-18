@@ -20,7 +20,7 @@
             echo $this->Form->control('short_description');
             echo $this->Form->control('url');
             echo $this->Form->control('serial_number');
-            echo $this->Form->control('parent_id', ['options' => $parentMenus]);
+            echo $this->Form->control('parent_id', ['options' => $parentMenus, 'empty'=>'(choose one)']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
