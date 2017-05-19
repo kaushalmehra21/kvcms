@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2017 at 02:51 PM
+-- Generation Time: May 19, 2017 at 11:00 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -43,6 +43,23 @@ CREATE TABLE IF NOT EXISTS `categories` (
 
 INSERT INTO `categories` (`id`, `title`, `short_description`, `description`, `image`, `parent_id`, `created`, `modified`) VALUES
 (3, 'uncategorised', 'uncategorised', 'uncategorised', 'uncategorised', NULL, '2017-05-18 12:28:01', '2017-05-18 12:36:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -172,6 +189,19 @@ CREATE TABLE IF NOT EXISTS `posts_documents` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `posts_tags`
+--
+
+CREATE TABLE IF NOT EXISTS `posts_tags` (
+  `id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `post_meta`
 --
 
@@ -229,6 +259,18 @@ INSERT INTO `roles` (`id`, `title`, `description`, `created`, `modified`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tags`
+--
+
+CREATE TABLE IF NOT EXISTS `tags` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -278,6 +320,15 @@ ALTER TABLE `categories`
   ADD KEY `parent_id` (`parent_id`);
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `post_id` (`post_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `parent_id` (`parent_id`);
+
+--
 -- Indexes for table `companies`
 --
 ALTER TABLE `companies`
@@ -322,6 +373,14 @@ ALTER TABLE `posts_documents`
   ADD KEY `document_id` (`document_id`);
 
 --
+-- Indexes for table `posts_tags`
+--
+ALTER TABLE `posts_tags`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `post_id` (`post_id`),
+  ADD KEY `tag_id` (`tag_id`);
+
+--
 -- Indexes for table `post_meta`
 --
 ALTER TABLE `post_meta`
@@ -338,6 +397,12 @@ ALTER TABLE `post_types`
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -363,6 +428,11 @@ ALTER TABLE `user_meta`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `companies`
 --
@@ -394,6 +464,11 @@ ALTER TABLE `posts`
 ALTER TABLE `posts_documents`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `posts_tags`
+--
+ALTER TABLE `posts_tags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `post_meta`
 --
 ALTER TABLE `post_meta`
@@ -409,6 +484,11 @@ ALTER TABLE `post_types`
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -423,6 +503,13 @@ ALTER TABLE `user_meta`
 --
 
 --
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
 -- Constraints for table `documents`
 --
 ALTER TABLE `documents`
@@ -435,6 +522,13 @@ ALTER TABLE `posts`
   ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `posts_ibfk_3` FOREIGN KEY (`post_type_id`) REFERENCES `post_types` (`id`);
+
+--
+-- Constraints for table `posts_tags`
+--
+ALTER TABLE `posts_tags`
+  ADD CONSTRAINT `posts_tags_ibfk_1` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`),
+  ADD CONSTRAINT `posts_tags_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`);
 
 --
 -- Constraints for table `users`
