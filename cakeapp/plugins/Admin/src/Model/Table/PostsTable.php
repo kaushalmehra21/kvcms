@@ -43,6 +43,7 @@ class PostsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Admin.Sluggable');
 
         $this->belongsTo('Categories', [
             'foreignKey' => 'category_id',
@@ -68,6 +69,12 @@ class PostsTable extends Table
             'joinTable' => 'posts_documents',
             'className' => 'Admin.Documents'
         ]);
+        $this->belongsToMany('Tags', [
+            'foreignKey' => 'post_id',
+            'targetForeignKey' => 'tag_id',
+            'joinTable' => 'posts_tags',
+            'className' => 'Admin.Tags'
+        ]);
     }
 
     /**
@@ -86,9 +93,9 @@ class PostsTable extends Table
             ->requirePresence('title', 'create')
             ->notEmpty('title');
 
-        $validator
+        /*$validator
             ->requirePresence('slug', 'create')
-            ->notEmpty('slug');
+            ->notEmpty('slug');*/
 
         $validator
             ->requirePresence('short_description', 'create')

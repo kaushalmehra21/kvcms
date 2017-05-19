@@ -37,7 +37,7 @@
         <legend><?= __('Add Post') ?></legend>
         <?php
             echo $this->Form->control('title');
-            echo $this->Form->control('slug');
+            //echo $this->Form->control('slug');
             echo $this->Form->control('short_description');
             echo $this->Form->control('description', ['id'=>'editor1']);
             echo '<br>';
@@ -46,7 +46,8 @@
             echo $this->Form->control('post_type_id', ['options' => $postTypes]);
             echo $this->Form->control('status');
             echo $this->Form->control('featured_image');
-            echo $this->Form->control('documents._ids', ['options' => $documents]);
+            //echo $this->Form->control('documents._ids', ['options' => $documents]);
+            echo $this->Form->control('tags._ids', ['class'=>'tokenize-demo', 'options' => $tags]);
         ?>
     </fieldset>
     <script>
@@ -54,6 +55,7 @@
         // instance, using default configuration.
         CKEDITOR.replace( 'editor1' );
     </script>
+    <script>$('.tokenize-demo').tokenize2();</script>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
