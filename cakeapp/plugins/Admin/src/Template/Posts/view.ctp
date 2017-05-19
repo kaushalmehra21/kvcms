@@ -72,7 +72,7 @@
     </table>
     <div class="row">
         <h4><?= __('Description') ?></h4>
-        <?= $this->Text->autoParagraph(h($post->description)); ?>
+        <?= $this->Text->autoParagraph($post->description); ?>
     </div>
     <div class="related">
         <h4><?= __('Related Post Meta') ?></h4>

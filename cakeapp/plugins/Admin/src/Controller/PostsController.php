@@ -55,6 +55,7 @@ class PostsController extends AppController
     {
         $post = $this->Posts->newEntity();
         if ($this->request->is('post')) {
+
             $post = $this->Posts->patchEntity($post, $this->request->getData());
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__('The post has been saved.'));
@@ -67,7 +68,8 @@ class PostsController extends AppController
         $users = $this->Posts->Users->find('list', ['limit' => 200]);
         $postTypes = $this->Posts->PostTypes->find('list', ['limit' => 200]);
         $documents = $this->Posts->Documents->find('list', ['limit' => 200]);
-        $this->set(compact('post', 'categories', 'users', 'postTypes', 'documents'));
+        $tags = $this->Posts->Tags->find('list', ['limit' => 200]);
+        $this->set(compact('post', 'categories', 'users', 'postTypes', 'documents', 'tags'));
         $this->set('_serialize', ['post']);
     }
 

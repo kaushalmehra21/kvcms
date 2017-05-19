@@ -28,7 +28,7 @@
             echo $this->Form->control('short_description');
             echo $this->Form->control('description');
             echo $this->Form->control('image');
-            echo $this->Form->control('parent_id', ['options' => $parentCategories]);
+            echo $this->Form->control('parent_id', ['options' => $parentCategories, 'empty' => '(choose one)']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
