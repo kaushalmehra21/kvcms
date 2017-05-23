@@ -19,7 +19,7 @@ class SluggableBehavior extends Behavior
     public function slug(Entity $entity)
     {
         $config = $this->config();
-        $value = $entity->get($config['field']);
+        $value = strtolower($entity->get($config['field']));
         $entity->set($config['slug'], Inflector::slug($value, $config['replacement']));
     }
 

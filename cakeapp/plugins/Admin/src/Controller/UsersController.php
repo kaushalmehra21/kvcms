@@ -13,6 +13,43 @@ use Admin\Controller\AppController;
 class UsersController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->Auth->allow(['logout']);
+    }
+
+
+    public function login()
+    {
+
+        $this->viewBuilder()->setLayout('Admin.login');
+        
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+
+                if($this->Auth->redirectUrl()=='/'){
+                    return $this->redirect(['controller'=>'users', 'action'=>'index']);
+                } else {
+                    return $this->redirect($this->Auth->redirectUrl());    
+                }
+                
+            }
+            $this->Flash->error('Your username or password is incorrect.');
+        }
+    }
+
+
+    public function logout()
+    {
+        $this->Flash->success('You are now logged out.');
+        return $this->redirect($this->Auth->logout());
+    }
+
+
+
     /**
      * Index method
      *
@@ -20,6 +57,26 @@ class UsersController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Roles']
+        ];
+        $users = $this->paginate($this->Users);
+
+        $this->set(compact('users'));
+        $this->set('_serialize', ['users']);
+    }
+
+
+    /**
+     * List method
+     *
+     * @return \Cake\Http\Response|null
+     */
+    public function all()
+    {
+
+        $this->viewBuilder()->setLayout('Admin.admin');
+
         $this->paginate = [
             'contain' => ['Roles']
         ];
