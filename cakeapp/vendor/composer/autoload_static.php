@@ -75,6 +75,8 @@ class ComposerStaticInit31d1687d9693886ce6c9982000a78ef3
         ),
         'B' => 
         array (
+            'BasicAdmin\\Test\\' => 16,
+            'BasicAdmin\\' => 11,
             'Bake\\' => 5,
         ),
         'A' => 
@@ -211,6 +213,14 @@ class ComposerStaticInit31d1687d9693886ce6c9982000a78ef3
         'Cake\\' => 
         array (
             0 => __DIR__ . '/..' . '/cakephp/cakephp/src',
+        ),
+        'BasicAdmin\\Test\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/plugins/BasicAdmin/tests',
+        ),
+        'BasicAdmin\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/plugins/BasicAdmin/src',
         ),
         'Bake\\' => 
         array (

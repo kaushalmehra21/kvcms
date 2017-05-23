@@ -222,3 +222,5 @@ if (Configure::read('debug')) {
 }
 
 Plugin::load('Admin', ['bootstrap' => false, 'routes' => true]);
+
+Plugin::load('BasicAdmin', ['bootstrap' => false, 'routes' => true]);
