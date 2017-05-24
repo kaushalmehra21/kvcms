@@ -3,28 +3,48 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Categories'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Parent Categories'), ['controller' => 'Categories', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Parent Category'), ['controller' => 'Categories', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="categories form large-9 medium-8 columns content">
-    <?= $this->Form->create($category) ?>
-    <fieldset>
-        <legend><?= __('Add Category') ?></legend>
-        <?php
-            echo $this->Form->control('title');
-            echo $this->Form->control('short_description');
-            echo $this->Form->control('description');
-            echo $this->Form->control('image');
-            echo $this->Form->control('parent_id', ['options' => $parentCategories, 'empty' => '(choose one)']);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+<!--grid-->
+<div class="validation-system">
+    <div class="validation-form">
+        <!---->
+        <?= $this->Form->create($category) ?>
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">Title</label>
+                <?= $this->Form->text('title', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"> </div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">Short Description</label>
+                <?= $this->Form->text('short_description') ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">Description</label>
+                <?= $this->Form->textarea('description') ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">Image</label>
+                <?= $this->Form->text('image', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group2 group-mail">
+                <label class="control-label">Parent Id</label>
+                <?= $this->Form->select('parent_id', $parentCategories, ['empty' => '(choose one)']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group">
+                <?= $this->Form->button(__('Submit'), ['class'=>'btn btn-primary']) ?>
+            </div>
+            <div class="clearfix"></div>
+        <?= $this->Form->end() ?>
+        <!---->
+    </div>
 </div>
+<!--//grid-->
+

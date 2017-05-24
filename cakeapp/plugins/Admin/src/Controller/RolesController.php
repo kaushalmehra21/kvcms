@@ -20,6 +20,9 @@ class RolesController extends AppController
      */
     public function index()
     {
+
+        $this->viewBuilder()->setLayout('Admin.admin');
+        
         $roles = $this->paginate($this->Roles);
 
         $this->set(compact('roles'));
@@ -50,6 +53,8 @@ class RolesController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->setLayout('Admin.admin');
+
         $role = $this->Roles->newEntity();
         if ($this->request->is('post')) {
             $role = $this->Roles->patchEntity($role, $this->request->getData());

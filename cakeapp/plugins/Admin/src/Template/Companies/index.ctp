@@ -1,21 +1,23 @@
 <?php
 /**
-  * @var \App\View\AppView $this
-  */
+* @var \App\View\AppView $this
+*/
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Company'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Company Meta'), ['controller' => 'CompanyMeta', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Company Metum'), ['controller' => 'CompanyMeta', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="companies index large-9 medium-8 columns content">
-    <h3><?= __('Companies') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+<?= $this->Html->css('/libs/pooled/css/table-style.css') ?>
+<?= $this->Html->css('/libs/pooled/css/basictable.css') ?>
+<?= $this->Html->css('/libs/pooled/css/basictable.css') ?>
+<!-- //Custom Theme files -->
+
+<?= $this->Html->script('/libs/pooled/js/jquery.basictable.min.js') ?>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#table').basictable();
+    });
+</script>
+
+<div class="w3l-table-info">
+    <h2>Companies</h2>
+    <table id="table">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
@@ -47,14 +49,22 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6" style="text-align: left;">
+                <nav class="row">
+                    <ul class="pagination">
+                        <?= $this->Paginator->first('<< ' . __('')) ?>
+                        <?= $this->Paginator->prev('< ' . __('')) ?>
+                        <?= $this->Paginator->numbers() ?>
+                        <?= $this->Paginator->next(__('') . ' >') ?>
+                        <?= $this->Paginator->last(__('') . ' >>') ?>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-6" style="margin-top:30px; text-align: right;">
+                <P><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></P>
+            </div>
+        </div>
     </div>
 </div>

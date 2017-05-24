@@ -3,34 +3,46 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Roles'), ['controller' => 'Roles', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Role'), ['controller' => 'Roles', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Companies'), ['controller' => 'Companies', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Company'), ['controller' => 'Companies', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Documents'), ['controller' => 'Documents', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Document'), ['controller' => 'Documents', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List User Meta'), ['controller' => 'UserMeta', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User Metum'), ['controller' => 'UserMeta', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Add User') ?></legend>
-        <?php
-            echo $this->Form->control('username');
-            echo $this->Form->control('password');
-            echo $this->Form->control('email');
-            echo $this->Form->control('role_id', ['options' => $roles]);
-            echo $this->Form->control('activation_key');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+<!--grid-->
+<div class="validation-system">
+    <div class="validation-form">
+        <!---->
+        <?= $this->Form->create($user) ?>
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">Username</label>
+                <?= $this->Form->text('username', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"> </div>
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">Password</label>
+                <?= $this->Form->text('password', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">Email</label>
+                <?= $this->Form->text('email', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group2 group-mail">
+                <label class="control-label">Role</label>
+                <?= $this->Form->select('role_id', $roles, ['empty' => '(choose one)']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">Activation Key</label>
+                <?= $this->Form->text('activation_key', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group">
+                <?= $this->Form->button(__('Submit'), ['class'=>'btn btn-primary']) ?>
+            </div>
+            <div class="clearfix"></div>
+        <?= $this->Form->end() ?>
+        <!---->
+    </div>
 </div>
+<!--//grid-->

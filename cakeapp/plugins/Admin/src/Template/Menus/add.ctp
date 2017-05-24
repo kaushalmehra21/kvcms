@@ -3,26 +3,48 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Menus'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Parent Menus'), ['controller' => 'Menus', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Parent Menu'), ['controller' => 'Menus', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="menus form large-9 medium-8 columns content">
-    <?= $this->Form->create($menu) ?>
-    <fieldset>
-        <legend><?= __('Add Menu') ?></legend>
-        <?php
-            echo $this->Form->control('title');
-            echo $this->Form->control('short_description');
-            echo $this->Form->control('url');
-            echo $this->Form->control('serial_number');
-            echo $this->Form->control('parent_id', ['options' => $parentMenus, 'empty'=>'(choose one)']);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+<!--grid-->
+<div class="validation-system">
+    <div class="validation-form">
+        <!---->
+        <?= $this->Form->create($menu) ?>
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">Title</label>
+                <?= $this->Form->text('title', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"> </div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">Short Description</label>
+                <?= $this->Form->text('short_description', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">Url</label>
+                <?= $this->Form->text('url', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">Serial Number</label>
+                <?= $this->Form->text('serial_number', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group2 group-mail">
+                <label class="control-label">Parent Id</label>
+                <?= $this->Form->select('parent_id', $parentMenus, ['empty' => '(choose one)']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group">
+                <?= $this->Form->button(__('Submit'), ['class'=>'btn btn-primary']) ?>
+            </div>
+            <div class="clearfix"></div>
+        <?= $this->Form->end() ?>
+        <!---->
+    </div>
 </div>
+<!--//grid-->
+

@@ -1,71 +1,32 @@
-
-
-<!--form-stars-here-->
-<div class="form-w3-agile">
-    <h2>Credit login form</h2>
-    <?= $this->Form->create() ?>
-        <div class="form-sub-w3">
-
-        	<?= $this->Form->email('email', ['placeholder'=>'Customer number or username', 'required']) ?>
-
-            <div class="icon-w3">
-                <i class="fa fa-user" aria-hidden="true"></i>
-            </div>
-        </div>
-        <div class="form-sub-w3">
-
-        	<?= $this->Form->password('password', ['placeholder'=>'Password', 'required']) ?>
-
-            <div class="icon-w3">
-                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-            </div>
-        </div>
-        <p class="p-bottom-w3ls">Are you new to eBanking?<a class="w3_play_icon1" href="#small-dialog1">  Register here</a></p>
-        
-        <div class="submit-w3l">
-
-			<?= $this->Form->submit('Login') ?>
-        </div>
-    <?= $this->Form->end() ?>
-</div>
-<!--//form-ends-here-->
-
-<div id="small-dialog1" class="mfp-hide">
-    <div class="contact-form1">
-        <div class="contact-w3-agileits">
-            <h3>Register Form</h3>
-            <form action="#" method="post">
-                <div class="form-sub-w3ls">
-                    <input placeholder="User Name"  type="text" required="">
-                    <div class="icon-agile">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="form-sub-w3ls">
-                    <input placeholder="Email" class="mail" type="email" required="">
-                    <div class="icon-agile">
-                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="form-sub-w3ls">
-                    <input placeholder="Password"  type="password" required="">
-                    <div class="icon-agile">
-                        <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="form-sub-w3ls">
-                    <input placeholder="Confirm Password"  type="password" required="">
-                    <div class="icon-agile">
-                        <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="login-check">
-                    <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><p>I Accept Terms & Conditions</p></label>
-                </div>
-                <div class="submit-w3l">
-                    <input type="submit" value="Register">
-                </div>
-            </form>
-        </div>  
+<?php
+/**
+  * @var \App\View\AppView $this
+  */
+?>
+<h2>Sign In</h2>
+<form action="#" method="post">
+    <div class="username">
+        <span class="username">Username:</span>
+        <?= $this->Form->email('email', ['placeholder'=>'Email', 'class'=>'name', 'required']) ?>
+        <!-- <input type="text" name="name" class="name" placeholder="" required=""> -->
+        <div class="clearfix"></div>
     </div>
-</div> 
+    <div class="password-agileits">
+        <span class="username">Password:</span>
+        <?= $this->Form->password('password', ['placeholder'=>'Password', 'class'=>'password', 'required']) ?>
+        <!-- <input type="password" name="password" class="password" placeholder="" required=""> -->
+        <div class="clearfix"></div>
+    </div>
+    <div class="rem-for-agile">
+        <input type="checkbox" name="remember" class="remember">Remember me<br>
+        <a href="#">Forgot Password</a><br>
+    </div>
+    <div class="login-w3">
+        <?= $this->Form->submit('Login', ['class'=>'login']) ?>
+        <!-- <input type="submit" class="login" value="Sign In"> -->
+    </div>
+    <div class="clearfix"></div>
+</form>
+<div class="back">
+    <a href="index.html">Back to home</a>
+</div>

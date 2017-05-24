@@ -20,6 +20,8 @@ class CategoriesController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->setLayout('Admin.admin');
+
         $this->paginate = [
             'contain' => ['ParentCategories']
         ];
@@ -53,6 +55,8 @@ class CategoriesController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->setLayout('Admin.admin');
+        
         $category = $this->Categories->newEntity();
         if ($this->request->is('post')) {
             $category = $this->Categories->patchEntity($category, $this->request->getData());

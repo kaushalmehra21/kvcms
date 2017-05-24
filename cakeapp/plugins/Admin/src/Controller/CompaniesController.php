@@ -20,6 +20,9 @@ class CompaniesController extends AppController
      */
     public function index()
     {
+
+        $this->viewBuilder()->setLayout('Admin.admin');
+
         $this->paginate = [
             'contain' => ['Users']
         ];
@@ -53,6 +56,10 @@ class CompaniesController extends AppController
      */
     public function add()
     {
+
+        $this->viewBuilder()->setLayout('Admin.admin');
+
+        
         $company = $this->Companies->newEntity();
         if ($this->request->is('post')) {
             $company = $this->Companies->patchEntity($company, $this->request->getData());

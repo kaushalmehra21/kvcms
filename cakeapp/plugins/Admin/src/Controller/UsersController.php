@@ -57,6 +57,9 @@ class UsersController extends AppController
      */
     public function index()
     {
+
+        $this->viewBuilder()->setLayout('Admin.admin');
+        
         $this->paginate = [
             'contain' => ['Roles']
         ];
@@ -110,6 +113,9 @@ class UsersController extends AppController
      */
     public function add()
     {
+        
+        $this->viewBuilder()->setLayout('Admin.admin');
+
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());

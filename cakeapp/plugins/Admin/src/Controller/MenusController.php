@@ -20,6 +20,9 @@ class MenusController extends AppController
      */
     public function index()
     {
+
+        $this->viewBuilder()->setLayout('Admin.admin');
+
         $this->paginate = [
             'contain' => ['ParentMenus']
         ];
@@ -53,6 +56,9 @@ class MenusController extends AppController
      */
     public function add()
     {
+
+        $this->viewBuilder()->setLayout('Admin.admin');
+        
         $menu = $this->Menus->newEntity();
         if ($this->request->is('post')) {
             $menu = $this->Menus->patchEntity($menu, $this->request->getData());

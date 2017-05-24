@@ -3,28 +3,46 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Companies'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Company Meta'), ['controller' => 'CompanyMeta', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Company Metum'), ['controller' => 'CompanyMeta', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="companies form large-9 medium-8 columns content">
-    <?= $this->Form->create($company) ?>
-    <fieldset>
-        <legend><?= __('Add Company') ?></legend>
-        <?php
-            echo $this->Form->control('title');
-            echo $this->Form->control('description');
-            echo $this->Form->control('logo');
-            echo $this->Form->control('banner');
-            echo $this->Form->control('user_id', ['options' => $users]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+<!--grid-->
+<div class="validation-system">
+    <div class="validation-form">
+        <!---->
+        <?= $this->Form->create($company) ?>
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">title</label>
+                <?= $this->Form->text('title', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"> </div>
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">description</label>
+                <?= $this->Form->textarea('description') ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">logo</label>
+                <?= $this->Form->text('logo', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">banner</label>
+                <?= $this->Form->text('banner', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group2 group-mail">
+                <label class="control-label">user_id</label>
+                <?= $this->Form->select('user_id', $users, ['empty' => '(choose one)']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group">
+                <?= $this->Form->button(__('Submit'), ['class'=>'btn btn-primary']) ?>
+            </div>
+            <div class="clearfix"></div>
+        <?= $this->Form->end() ?>
+        <!---->
+    </div>
 </div>
+<!--//grid-->
