@@ -53,6 +53,9 @@ class PostsController extends AppController
      */
     public function add()
     {
+
+        $this->viewBuilder()->setLayout('Admin.admin');
+        
         $post = $this->Posts->newEntity();
         if ($this->request->is('post')) {
 

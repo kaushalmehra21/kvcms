@@ -40,12 +40,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <?= $this->Html->css('/libs/pooled/css/morris.css') ?>
     <?= $this->Html->css('/libs/pooled/css/font-awesome.css') ?>
     <?= $this->Html->css('/libs/pooled/css/icon-font.min.css') ?>
+    <?= $this->Html->css('/libs/tokenize2/tokenize2.min.css') ?>
     <!-- //Custom Theme files -->
 
     <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'/>
     <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
     <?= $this->Html->script('//code.jquery.com/jquery-2.2.4.min.js') ?>
+
+    <?= $this->Html->script('/libs/ckeditor/ckeditor.js') ?>
+    <?= $this->Html->script('/libs/tokenize2/tokenize2.min.js') ?>
 
     <?= $this->Html->script('/libs/pooled/js/scripts.js') ?>
     <!-- Bootstrap Core JavaScript -->

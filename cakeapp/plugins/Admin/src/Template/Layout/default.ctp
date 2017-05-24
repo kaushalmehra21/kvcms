@@ -28,9 +28,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
-    <!-- <?= $this->Html->css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css') ?> -->
     <?= $this->Html->css('/libs/tokenize2/tokenize2.min.css') ?>
-    
+
     <?= $this->Html->script('//code.jquery.com/jquery-2.2.4.min.js') ?>
     <?= $this->Html->script('/libs/ckeditor/ckeditor.js') ?>
     <?= $this->Html->script('/libs/tokenize2/tokenize2.min.js') ?>
