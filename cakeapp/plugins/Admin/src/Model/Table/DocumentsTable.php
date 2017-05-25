@@ -81,7 +81,6 @@ class DocumentsTable extends Table
             ->allowEmpty('description');
 
         $validator
-            ->integer('extention')
             ->requirePresence('extention', 'create')
             ->notEmpty('extention');
 
