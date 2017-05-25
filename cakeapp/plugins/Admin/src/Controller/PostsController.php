@@ -20,6 +20,9 @@ class PostsController extends AppController
      */
     public function index()
     {
+
+        $this->viewBuilder()->setLayout('Admin.admin');
+        
         $this->paginate = [
             'contain' => ['Categories', 'Users', 'PostTypes']
         ];

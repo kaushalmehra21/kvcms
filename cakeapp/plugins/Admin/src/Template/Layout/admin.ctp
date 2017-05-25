@@ -148,6 +148,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a> <i class="fa fa-angle-right"></i></li>
                 </ol>
+                <?= $this->Flash->render() ?>
                 <?= $this->fetch('content') ?>
                 <!--inner block start here-->
                 <div class="inner-block"></div>

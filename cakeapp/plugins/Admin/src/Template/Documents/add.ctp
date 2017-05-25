@@ -3,32 +3,71 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Documents'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="documents form large-9 medium-8 columns content">
-    <?= $this->Form->create($document) ?>
-    <fieldset>
-        <legend><?= __('Add Document') ?></legend>
-        <?php
-            echo $this->Form->control('title');
-            echo $this->Form->control('name');
-            echo $this->Form->control('short_description');
-            echo $this->Form->control('description');
-            echo $this->Form->control('extention');
-            echo $this->Form->control('type');
-            echo $this->Form->control('size');
-            echo $this->Form->control('user_id', ['options' => $users]);
-            echo $this->Form->control('posts._ids', ['options' => $posts]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+<!--grid-->
+<div class="validation-system">
+    <div class="validation-form">
+        <!---->
+        <?= $this->Form->create($document) ?>
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">title</label>
+                <?= $this->Form->text('title', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"> </div>
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">name</label>
+                <?= $this->Form->text('name') ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">short_description</label>
+                <?= $this->Form->text('short_description', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">description</label>
+                <?= $this->Form->text('description', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">extention</label>
+                <?= $this->Form->text('extention', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">type</label>
+                <?= $this->Form->text('type', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group1 group-mail">
+                <label class="control-label">size</label>
+                <?= $this->Form->text('size', ['class'=>'control-label']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group2 group-mail">
+                <label class="control-label">user_id</label>
+                <?= $this->Form->select('user_id', $users, ['empty' => '(choose one)']) ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 form-group2 group-mail">
+                <label class="control-label">post_id</label>
+                <?= $this->Form->select('posts._ids', $posts, ['empty' => '(choose one)']) ?>
+            </div>
+            <div class="clearfix"></div>            
+
+            <div class="col-md-12 form-group">
+                <?= $this->Form->button(__('Submit'), ['class'=>'btn btn-primary']) ?>
+            </div>
+            <div class="clearfix"></div>
+        <?= $this->Form->end() ?>
+        <!---->
+    </div>
 </div>
+<!--//grid-->
+

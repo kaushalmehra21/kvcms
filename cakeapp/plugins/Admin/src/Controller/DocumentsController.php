@@ -20,6 +20,9 @@ class DocumentsController extends AppController
      */
     public function index()
     {
+
+        $this->viewBuilder()->setLayout('Admin.admin');
+
         $this->paginate = [
             'contain' => ['Users']
         ];
@@ -53,6 +56,9 @@ class DocumentsController extends AppController
      */
     public function add()
     {
+
+        $this->viewBuilder()->setLayout('Admin.admin');
+        
         $document = $this->Documents->newEntity();
         if ($this->request->is('post')) {
             $document = $this->Documents->patchEntity($document, $this->request->getData());
