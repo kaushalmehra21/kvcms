@@ -1,0 +1,5 @@
+{
+    "require": {
+        "multidots/cakephp-instagram": "^1.0"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "name": "multidots/cakephp-instagram",
+    "description": "Instagram plugin for CakePHP 3",
+    "license": "MIT",
+    "type": "cakephp-plugin",
+    "keywords": ["cakephp", "instagram"],
+    "homepage": "https://github.com/multidots/cakephp-instagram",
+    "require": {
+        "php": ">=5.5.9",
+        "cakephp/cakephp": ">=3.3.2 <4.0.0"
+    },
+    "require-dev": {
+        "cakephp/cakephp-codesniffer": "dev-master",
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Instagram\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Instagram\\Test\\": "tests",
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+        }
+    }
+}
